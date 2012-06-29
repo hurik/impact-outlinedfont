@@ -1,33 +1,41 @@
-Impact OutlinedFont
-==========
+# THIS PLUGIN IS OBSOLETE!
+Since [Impact 1.20](http://impactjs.com/blog/2012/05/impact-1-20) letterSpacing and lineSpacing properties were added for fonts. This two properties are making the same thing like my plugin and they make it better.
 
-#### OutlinedFont Class ####
+So I deleted the `outlinedfont.js` and this repo is here only to get the outlined font and for information.
 
-This plugin for the [Impact Game Engine](http://impactjs.com/) adds fonts with outlines, which behave like normal fonts.
-
-
-### Example ###
-
+## Example
 ![Screen shot 1](/hurik/impact-outlinedfont/raw/master/example.png)
 
+## How to use it
+1. Put the `outlinedfont.png` in your`media/` directory.
+1. In your game class:
+	
+```
+...
 
-### Usage ###
+MyGame = ig.Game.extend({
+	
+	// Load a font
+	font2: new ig.Font( 'media/outlinedfont.png' ),
 
-Put the `outlinedfont.js` into your `lib/plugins/` directory and the `outlinedfont.png` in your`media/` directory and require it with `plugins.outlinedfont`. 
-Load you font in your game class:
+	init: function() {
+		// Here we set the properties of the font, so that it behaves like a normal one
+		this.font.letterSpacing = -1;
+		this.font.lineSpacing = -2;
+	},
+		
+	...
+		
+	draw: function() {
+		this.parent();
+			
+		// Add your own drawing code here
+		var x = ig.system.width/2,
+			y = ig.system.height/2;
+			
+		this.font.draw( 'It Works!', x, y, ig.Font.ALIGN.CENTER );
+	}
+});
 
-	// new OutlinedFont(path, outlineWith);
-	// path       : Path to the font (Like in the normal font class)
-	// outlineWith: Width of the outline in pixel
-	font: new OutlinedFont('media/outlinedfont.png', 1),
-
-Now you can write text the same way you would do it with the normal font class.
-
-### Make own fonts ###
-
-When you make your font, you have to add the width raise to the whitespace.
-
-
-### Important information at the end ###
-
-I was to lazy to make a second font with a outline, which is thicker than 1 pixel, so I don't know if the outlineWidth argument is working correctly with something bigger than 1.
+...
+```
