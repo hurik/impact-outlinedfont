@@ -16,7 +16,7 @@ So I deleted the `outlinedfont.js` and this repo is here only to get the outline
 MyGame = ig.Game.extend({
 	
 	// Load a font
-	font2: new ig.Font( 'media/outlinedfont.png' ),
+	font: new ig.Font( 'media/outlinedfont.png' ),
 
 	init: function() {
 		// Here we set the properties of the font, so that it behaves like a normal one
